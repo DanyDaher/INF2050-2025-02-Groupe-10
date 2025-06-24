@@ -3,4 +3,5 @@ public class Cours {
     public String titre;
     public String description;
     public Number nbcredits;
+    public int test;
 }
