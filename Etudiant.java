@@ -4,7 +4,7 @@ public class Etudiant {
     public String prenom;
     public Number codeprogramme;
 
-    public Etudiant(String codepermanent,String nom, String prenom, Number codeprogramme){
+    public Etudiant(String codepermanent, String nom, String prenom, Number codeprogramme){
         this.codepermanent=codepermanent;
         this.nom=nom;
         this.prenom=prenom;
@@ -14,7 +14,6 @@ public class Etudiant {
     public String getCodePermanent() {
         return codepermanent;
     }
-
     public void setCodePermanent(String codepermanent) {
         this.codepermanent = codepermanent;
     }
