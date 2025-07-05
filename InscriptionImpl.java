@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
-//test
+
 public class InscriptionImpl extends Inscription{
     private final List<Inscription> inscriptions = new ArrayList<>();
 
