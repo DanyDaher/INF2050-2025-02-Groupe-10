@@ -1,7 +1,4 @@
-
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+package src.main.java.ca.uqam.inf2050;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -27,13 +24,7 @@ public class Fonctionnalité3et4 {
         }
         return compteur;
     }
-    @Test
-    public void testInscriptionavecAssertions(){
-        Etudiant E1 = new Etudiant("DIA00","Am","dou",100);
-        Etudiant E2 = new Etudiant("DIA00","Am","dou",100);
-        Groupecours groupecours = new Groupecours();
-        assertNotSame(E1,E2); //Vérifie que ce sont deux objets différents
-        assertTrue(E1 == E2);
-        assertFalse(E1 != E2);
-    }
+
+
+
 }

@@ -1,3 +1,5 @@
+package src.main.java.ca.uqam.inf2050;
+
 import java.time.LocalDate;
 
 public class Inscription {
@@ -19,25 +21,12 @@ public class Inscription {
     public Etudiant getEtudiant() {
         return etudiant;
     }
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
+
     public Groupecours getGroupeCours() {
         return groupecours;
     }
-    public void setGroupeCours(Groupecours groupeCours) {
-        this.groupecours = groupeCours;
-    }
+
     public LocalDate getDateAbandon() {
         return dateabandon;
-    }
-    public void setDateAbandon(LocalDate dateAbandon) {
-        this.dateabandon = dateAbandon;
-    }
-    public LocalDate getDateinscription() {
-        return dateinscription;
-    }
-    public void setDateinscription(LocalDate dateinscription) {
-        this.dateinscription = dateinscription;
     }
 }
