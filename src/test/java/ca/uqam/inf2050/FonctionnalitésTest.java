@@ -26,6 +26,7 @@ public class Fonctionnalité3et4Test {
         groupecours = new Groupecours();
         inscriptions = new ArrayList<>();
     }
+
     @Test
     public void testInscriptionavecAssertions(){
         Etudiant E1 = new Etudiant("DIA00","Am","dou",100);
@@ -49,5 +50,4 @@ public class Fonctionnalité3et4Test {
         assertFalse(nbreInscrits != etudiants.size());
         assertNotSame(E1,E2);
     }
-
 }
