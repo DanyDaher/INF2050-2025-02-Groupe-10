@@ -1,6 +1,5 @@
 package src.main.java.ca.uqam.inf2050;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 import java.time.LocalDate;
 
 public class InscriptionImpl extends Inscription {
@@ -14,6 +13,7 @@ public class InscriptionImpl extends Inscription {
     void addInscription(Inscription i) {
         this.inscriptions.add(i);
     }
+
     public Inscription getInscription (String codePermanent) {
         for (Inscription i : inscriptions) {
             if(i.getEtudiant().getCodePermanent().equals(codePermanent)) {
@@ -53,6 +53,7 @@ public class InscriptionImpl extends Inscription {
         }
         return resultat;
     }
+
     //Fonctionnalité 4
     public int compterEtudiantsInscrits(Groupecours groupe, List<Inscription> inscriptions) {
         int compteur = 0;
@@ -62,6 +63,48 @@ public class InscriptionImpl extends Inscription {
             }
         }
         return compteur;
+    }
+
+    //Fonctionnalité 5
+    public int compterEtudiantsInscritsAuProgramme(List<Inscription> inscriptions, int codeProgramme, int anneeDebut) {
+        Set<String> etudiantsUniques = new HashSet<>();
+
+        for (Inscription inscription : inscriptions) {
+            Etudiant etu = inscription.getEtudiant();
+            Groupecours gc = inscription.getGroupeCours();
+            Session session = gc.getSession();
+
+            int anneeSession = session.getDatedebut().getYear();
+
+            boolean estDansAnneeAcademique = (
+                    (anneeSession == anneeDebut && session.getDatedebut().getMonthValue() >= 8) // Automne
+                            || (anneeSession == anneeDebut + 1 && session.getDatedebut().getMonthValue() <= 7) // Hiver/Été
+            );
+
+            if (etu.getCodeProgramme().intValue() == codeProgramme && estDansAnneeAcademique) {
+                etudiantsUniques.add(etu.getCodePermanent());
+            }
+        }
+
+        return etudiantsUniques.size();
+    }
+
+
+    //Fonctionnalité 6
+    public void comparerInscriptionsAnnuelles(List<Inscription> inscriptions, int codeProgramme, int anneeDebut1, int anneeDebut2) {
+        int totalAnnee1 = compterEtudiantsInscritsAuProgramme(inscriptions, codeProgramme, anneeDebut1);
+        int totalAnnee2 = compterEtudiantsInscritsAuProgramme(inscriptions, codeProgramme, anneeDebut2);
+
+        System.out.println("Inscrits au programme " + codeProgramme + " pour l'année " + anneeDebut1 + "-" + (anneeDebut1 + 1) + " : " + totalAnnee1);
+        System.out.println("Inscrits au programme " + codeProgramme + " pour l'année " + anneeDebut2 + "-" + (anneeDebut2 + 1) + " : " + totalAnnee2);
+
+        if (totalAnnee2 > totalAnnee1) {
+            System.out.println("Il y a eu une augmentation de " + (totalAnnee2 - totalAnnee1) + " inscriptions.");
+        } else if (totalAnnee2 < totalAnnee1) {
+            System.out.println("Il y a eu une diminution de " + (totalAnnee1 - totalAnnee2) + " inscriptions.");
+        } else {
+            System.out.println("Le nombre d'inscriptions est resté stable.");
+        }
     }
 
     //Fonctionnalité 7
