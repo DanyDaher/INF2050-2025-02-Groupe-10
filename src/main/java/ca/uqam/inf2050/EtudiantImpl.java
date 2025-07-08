@@ -1,3 +1,4 @@
+package src.main.java.ca.uqam.inf2050;
 import java.util.List;
 import java.util.ArrayList;
 

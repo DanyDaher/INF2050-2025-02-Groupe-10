@@ -1,3 +1,4 @@
+package src.main.java.ca.uqam.inf2050;
 public class Etudiant {
     public String codepermanent;
     public String nom;

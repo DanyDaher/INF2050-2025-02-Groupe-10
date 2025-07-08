@@ -24,7 +24,4 @@ public class Fonctionnalité3et4 {
         }
         return compteur;
     }
-
-
-
 }
