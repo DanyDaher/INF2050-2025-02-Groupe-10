@@ -50,4 +50,9 @@ public class Fonctionnalité3et4Test {
         assertFalse(nbreInscrits != etudiants.size());
         assertNotSame(E1,E2);
     }
+
+    @Test
+    public void testGetTousCoursSessionEnCours(){
+
+    }
 }
