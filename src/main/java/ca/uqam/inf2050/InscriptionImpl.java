@@ -79,13 +79,12 @@ public class InscriptionImpl extends Inscription {
             boolean estDansAnneeAcademique = (
                     (anneeSession == anneeDebut && session.getDatedebut().getMonthValue() >= 8) // Automne
                             || (anneeSession == anneeDebut + 1 && session.getDatedebut().getMonthValue() <= 7) // Hiver/Été
-            );
+            )
 
             if (etu.getCodeProgramme().intValue() == codeProgramme && estDansAnneeAcademique) {
                 etudiantsUniques.add(etu.getCodePermanent());
             }
         }
-
         return etudiantsUniques.size();
     }
 
