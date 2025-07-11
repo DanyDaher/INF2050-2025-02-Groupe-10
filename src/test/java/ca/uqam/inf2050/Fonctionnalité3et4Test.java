@@ -45,7 +45,6 @@ public class Fonctionnalité3et4Test {
         etudiants.add(E2);
         
         int nbreInscrits = etudiants.size();
-
         assertTrue(nbreInscrits == etudiants.size());// un seul est inscrit
         assertFalse(nbreInscrits != etudiants.size());
         assertNotSame(E1,E2);
