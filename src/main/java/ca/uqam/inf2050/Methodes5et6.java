@@ -1,3 +1,5 @@
+package src.main.java.ca.uqam.inf2050;
+
 import java.util.*;
 import java.time.LocalDate;
 public class Methodes5et6 {
@@ -6,7 +8,7 @@ public class Methodes5et6 {
 
         for (Inscription inscription : inscriptions) {
             Etudiant etu = inscription.getEtudiant();
-            GroupeCours gc = inscription.getGroupecours();
+            Groupecours gc = inscription.getGroupecours();
             Session session = gc.getSession();
 
             int anneeSession = session.getDatedebut().getYear();
@@ -16,8 +18,8 @@ public class Methodes5et6 {
                             || (anneeSession == anneeDebut + 1 && session.getDatedebut().getMonthValue() <= 7) // Hiver/Été
             );
 
-            if (etu.getCodeprogramme().intValue() == codeProgramme && estDansAnneeAcademique) {
-                etudiantsUniques.add(etu.getCodepermanent());
+            if (etu.getCodeProgramme().intValue() == codeProgramme && estDansAnneeAcademique) {
+                etudiantsUniques.add(etu.getCodePermanent());
             }
         }
 

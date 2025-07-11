@@ -6,13 +6,16 @@ public class Groupecours {
     public Number maxinscriptions;
     public String local;
 
-    public Groupecours(Cours cours, Enseignant enseignant, Session session, Number maxinscriptions, String local) {
+    public Groupecours(Cours cours, Enseignant ens, Session sessionAutomne2024, int i, String s) {
         this.cours = cours;
         this.enseignant = enseignant;
         this.session = session;
         this.maxinscriptions = maxinscriptions;
         this.local = local;
     }
+
+
+
 
     public Cours getCours() {
         return cours;

@@ -15,22 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fonctionnalité3et4Test {
-    private Fonctionnalité3et4 service;
-    private Groupecours groupecours;
-    private List<Inscription> inscriptions;
+    public Fonctionnalité3et4 service;
+    public Groupecours groupecours;
+    public List<Inscription> inscriptions;
 
     //Évite la duplication de texte
     @Before
     public void établir(){
         service = new Fonctionnalité3et4();
-        groupecours = new Groupecours();
         inscriptions = new ArrayList<>();
     }
     @Test
     public void testInscriptionavecAssertions(){
         Etudiant E1 = new Etudiant("DIA00","Am","dou",100);
         Etudiant E2 = new Etudiant("DIA00","Am","dou",100);
-        Groupecours groupecours = new Groupecours();
         assertNotSame(E1,E2); //Vérifie que ce sont deux objets différents
         assertTrue(E1 != E2);
         assertFalse(E1 == E2);
@@ -40,6 +38,7 @@ public class Fonctionnalité3et4Test {
     public void testCompterEtudiantsInscrit(){
         Etudiant E1 = new Etudiant("DIA00","Am","dou",100);
         Etudiant E2 = new Etudiant("DIA67","Col","Piw",101);
+
         List<Etudiant> etudiants = new ArrayList<>();
         etudiants.add(E1);
         etudiants.add(E2);

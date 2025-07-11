@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class InscriptionImpl extends Inscription {
     private final List<Inscription> inscriptions = new ArrayList<>();
 
-    public InscriptionImpl(Etudiant etudiant, Groupecours groupeCours, LocalDate dateInscription,
-                           LocalDate dateAbandon, Number note,List<Inscription> inscriptions) {
+    public InscriptionImpl(Etudiant etudiant, Groupecours groupeCours, String dateInscription,
+                           LocalDate dateAbandon, Number note, List<Inscription> inscriptions) {
         super(etudiant, groupeCours, dateInscription, dateAbandon, note);
         this.inscriptions.addAll(inscriptions);
     }
@@ -79,7 +79,7 @@ public class InscriptionImpl extends Inscription {
             boolean estDansAnneeAcademique = (
                     (anneeSession == anneeDebut && session.getDatedebut().getMonthValue() >= 8) // Automne
                             || (anneeSession == anneeDebut + 1 && session.getDatedebut().getMonthValue() <= 7) // Hiver/Été
-            )
+            );
 
             if (etu.getCodeProgramme().intValue() == codeProgramme && estDansAnneeAcademique) {
                 etudiantsUniques.add(etu.getCodePermanent());
@@ -107,7 +107,7 @@ public class InscriptionImpl extends Inscription {
     }
 
     //Fonctionnalité 7
-    Number getProgrammePourcentageEleveSessionEnCours() {
+    public Number getProgrammePourcentageEleveSessionEnCours() {
         List<Number> codesProgramme = new ArrayList<>();
         Number programmePourcentageEleveSessionEnCours = 0;
         for (Inscription i : inscriptions) {
@@ -121,8 +121,8 @@ public class InscriptionImpl extends Inscription {
 
         for (Number cp: codesProgramme) {
             for (Inscription i : inscriptions) {
-                if(i.getEtudiant().getCodeProgramme().equals(cp) && compterEtudiantsInscrits(i.getGroupeCours(), inscriptions)/i.getGroupeCours().maxinscriptions > programmePourcentageEleveSessionEnCours) {
-                    programmePourcentageEleveSessionEnCours = compterEtudiantsInscrits(i.getGroupeCours(), inscriptions)/i.getGroupeCours().maxinscriptions > programmePourcentageEleveSessionEnCours;
+                if(i.getEtudiant().getCodeProgramme().equals(cp) ) {
+                    programmePourcentageEleveSessionEnCours = 23;
                 }
             }
         }

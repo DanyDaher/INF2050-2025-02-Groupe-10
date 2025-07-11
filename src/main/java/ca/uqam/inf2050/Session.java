@@ -11,6 +11,9 @@ public class Session {
         this.datedebut = datedebut;
         this.datefin = datefin;
     }
+
+
+
     public Number getCodesession() {
         return codesession;
     }

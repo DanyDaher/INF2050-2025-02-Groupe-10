@@ -1,6 +1,6 @@
 package src.main.java.ca.uqam.inf2050;
-import org.junit.*;
-import static org.junit.Assert.*;
+
+
 
 public class Cours {
     public String sigle;

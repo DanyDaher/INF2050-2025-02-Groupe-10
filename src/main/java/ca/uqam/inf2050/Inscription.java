@@ -8,7 +8,7 @@ public class Inscription {
     public LocalDate dateabandon;
     public Number note;
 
-    public Inscription(Etudiant etudiant, Groupecours groupeCours, LocalDate dateInscription,
+    public Inscription(Etudiant etudiant, Groupecours groupeCours, String dateInscription,
                        LocalDate dateAbandon, Number note) {
         this.etudiant = etudiant;
         this.groupecours = groupecours;
@@ -40,5 +40,10 @@ public class Inscription {
     }
     public void setDateinscription(LocalDate dateinscription) {
         this.dateinscription = dateinscription;
+    }
+
+
+    public Groupecours getGroupecours() {
+        return groupecours;
     }
 }
