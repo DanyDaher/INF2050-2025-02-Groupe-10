@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Résultats de recherche</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <h1>Résultats de recherche pour : "{{ query }}"</h1>
+
+  {% if resultats %}
+    <ul>
+      {% for animal in resultats %}
+        <li>
+          <h2><a href="{{ url_for('animal', animal_id=animal['id']) }}">{{ animal['nom'] }}</a></h2>
+          <p>{{ animal['description'] }}</p>
+          <p>
+            <a href="mailto:{{ animal['courriel'] }}">Contacter le propriétaire</a>
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucun animal ne correspond à votre recherche.</p>
+  {% endif %}
+
+  <p><a href="{{ url_for('recherche') }}">Nouvelle recherche</a></p>
+  <p><a href="{{ url_for('accueil') }}">Retour à l'accueil</a></p>
+</body>
+</html>

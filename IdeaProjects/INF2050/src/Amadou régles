@@ -1,0 +1,210 @@
+//Checkstyle "modifier" ,Amadou
+    /* Code qui ne respecte pas la régle "modifier"
+        public interface ContactInter {
+        static final String DEFAUT = "Inconnu";
+
+        void afficherInfosPersonnelles();
+    }
+
+    static public void testerAffichageInfos() {
+        ContactInter contact = new ContactInter() {
+            @Override
+            public void afficherInfosPersonnelles() {
+                System.out.println("Nom :");
+                System.out.println("Téléphone :");
+                System.out.println("Email :");
+
+            }
+        };
+contact.afficherInfosPersonnelles();
+    }
+*/
+    //Correction
+
+    /**
+     * Cette méthode permet d'afficher les informations personnelles.
+     * Aprés avoir entrer au préalable ces informations.
+     */
+    public void afficherInfosPersonnelles() {
+        if (nom.isEmpty() || telephone.isEmpty() || email.isEmpty()) {
+           nom= nom.replace(null, "Inconnu");
+            telephone = telephone.replace(null, "Inconnu");
+           email = email.replace(null, "Inconnu");
+
+        }
+        System.out.println("Nom :" + nom);
+        System.out.println("Téléphone :" + telephone);
+        System.out.println("Email :" + email);
+
+    }
+    //Méthode 2 checkstyle "Javadoc Comments"
+    /*
+    public void changerInfosPersonnelles() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Entrez le nom :");
+        this.nom = scanner.nextLine();
+        System.out.println("Entrez votre numéro de téléphone: ");
+        this.telephone = scanner.nextLine();
+        System.out.println("Entrez l'email : ");
+        this.email = scanner.nextLine();
+
+    }
+
+     */
+
+    //Correction :
+
+    /**
+     * Cette méthode devrait permettre de changer les informations personnelles.
+     * Ainsi , Bob pourra changer son nom , email et numéro de téléphone.
+     */
+    public static void changerInfosPersonnelles(Scanner scanValue) {
+        Scanner scanner6 = new Scanner(System.in);
+            System.out.println("Entrez le nom :");
+            nom = scanner6.nextLine();
+            System.out.println("Entrez votre numéro de téléphone: ");
+            telephone = scanner6.nextLine();
+            System.out.println("Entrez l'email : ");
+            email = scanner6.nextLine();
+
+
+    }
+    //Méthode 3 , checkstyle "Annotation"
+
+    /**
+     * Vérifie que les annotations sont situées
+     * sur la même ligne que leurs cibles.
+     */
+    /*
+    @SuppressWarnings("deprecation")
+public static void exit() {
+    System.out.println("Fin du programme ");
+}
+     */
+
+//Correction
+    @SuppressWarnings("deprecation") public static void exit() {
+        System.out.println("Fin du programme ");
+        System.exit(0);
+    }
+
+    //Méthode 4 , pmd régle "code style"
+    /*
+        public void changerMotDePasse() {
+        System.out.println("Votre mot de passe de base au lancement est 0");
+        Scanner scanner = new Scanner(System.in);
+        int mot1passe = 0;
+        System.out.println("Ecrivez votre mot de passe initial pour le changer (cela doit être un chiffre entre 0 et 99");
+        int mot2passe = scanner.nextInt();
+        if (mot1passe == mot2passe) {
+            //Bloc vide erreur
+        }
+        if (mot1passe == mot2passe) {
+            System.out.println("Vous pouvez changer votre mot de passe . Ecrivez le :");
+            mot2passe = scanner.nextInt();
+ mot1passe = mot2passe;
+        }
+    }
+
+     */
+    //Correction
+    public static void changerMotDePasse(Scanner scanValue) {
+        System.out.println("Votre mot de passe de base au lancement est 0");
+        try (Scanner scanner = new Scanner(System.in)) {
+
+            int mot1passe = 0;
+            System.out.println("Ecrivez votre mot de passe initial pour le changer (cela doit être un chiffre entre 0 et 99");
+            int mot2passe = scanner.nextInt();
+            if (mot1passe == mot2passe) {
+                System.out.println("Vous pouvez changer votre mot de passe . Ecrivez le :");
+                mot2passe = scanner.nextInt();
+                mot1passe = mot2passe;
+            }
+        }
+    }
+    //Méthode 5 pmd régle "error phone"
+    /*
+    public void ficheDeNotes() {
+        Scanner scanner = new Scanner(System.in);
+        String texte ="Cahier de note : ";
+         String ajout = scanner.nextLine();
+        texte.concat(ajout);
+ System.out.println(texte);
+
+    }
+
+     */
+//Correction
+
+    public static void ficheDeNotes(Scanner scanValue) {
+        Scanner scanner = new Scanner(System.in) ;
+           String texte = "Cahier de note : ";
+           String ajout = scanner.nextLine();
+           texte = texte.concat(ajout);
+           System.out.println(texte);
+
+    }
+
+
+///////////////////////////MAIN//////////////
+import java.util.Scanner;
+
+
+
+public class Main {
+    public static void main(String[] args) {
+
+    Contact doctorBob = new Contact("Bob", "514 328 2855", "doctorbob@gmail.com", 700.55);
+
+    Scanner scanValue = new Scanner(System.in);  // Create a Scanner object
+    System.out.println("Enter method value to test:");
+    int value = scanValue.nextInt();
+   scanValue.nextLine();
+
+    switch(value) {
+          case 1:
+            doctorBob.stealMoney(600.42, true);
+            break;
+          case 2:
+            System.out.println("value: 2, Method: 2");
+            break;
+          case 3:
+            doctorBob.showInfoWithGaps();
+            break;
+          case 4:
+            doctorBob.NoWhitespaceBefore();
+            break;
+          case 5:
+            doctorBob.LineLength();
+            break;
+          case 6:
+            doctorBob.EmptyIfStmt(5);
+            break;
+        case 7:
+        doctorBob.afficherInfosPersonnelles();
+        break;
+        case 8:
+            System.out.println("Vous pouvez changez vos informations");
+            Contact.changerInfosPersonnelles( scanValue);
+            break;
+        case 9:
+           Contact.exit();
+            break;
+        case 10:
+           Contact.ficheDeNotes(scanValue);
+            break;
+        case 11:
+            Contact.changerMotDePasse(scanValue);
+            break;
+        default:
+            System.out.println("Value: not between 1 and 22, Method: null");
+            break;
+
+        }
+        scanValue.close();
+    }
+
+
+}
+
+

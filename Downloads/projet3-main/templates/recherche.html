@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Résultats de recherche</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Rechercher un animal à adopter</h1>
+
+  <form action="{{ url_for('resultats') }}" method="get">
+    <input type="text" name="q" placeholder="Rechercher un animal..." value="{{ requete or '' }}">
+    <button type="submit">Rechercher</button>
+  </form>
+
+  {% if requete is defined %}
+    <h2>Résultats de recherche pour : "{{ requete }}"</h2>
+
+    {% if animaux and animaux|length > 0 %}
+      <ul>
+        {% for animal in animaux %}
+          <li>
+            <strong>{{ animal.nom }}</strong> - {{ animal.espece }} ({{ animal.age }} ans)
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Aucun animal ne correspond à votre recherche.</p>
+    {% endif %}
+  {% endif %}
+
+  <br>
+  <a href="{{ url_for('accueil') }}">Retour à l'accueil</a>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Centre d'adoption - Accueil</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <h1></h1>
+
+  <h2>Animaux à adopter</h2>
+  {% if animaux %}
+    <ul>
+      {% for a in animaux %}
+        <li>
+          <a href="{{ url_for('animal', animal_id=a.id) }}">{{ a.nom }}</a> - {{ a.espece }}<br/>
+          <small>{{ a.description[:100] }}{% if a.description|length > 100 %}...{% endif %}</small>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucun animal disponible actuellement.</p>
+  {% endif %}
+ <nav>
+  <ul>
+    <li><a href="{{ url_for('accueil') }}">Accueil</a></li>
+    <li><a href="{{ url_for('ajouter') }}">Ajouter un animal</a></li>
+    <li><a href="{{ url_for('recherche') }}">Rechercher</a></li>
+  </ul>
+</nav>
+</body>
+</html>

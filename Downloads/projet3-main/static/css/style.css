@@ -1,0 +1,20 @@
+div ,p {
+  color: black;
+}
+
+body {
+  background-image: url('/static/img/animaux.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: top;
+  color: teal;
+  margin: 0;
+  padding: 0;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
